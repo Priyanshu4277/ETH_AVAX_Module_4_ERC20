@@ -58,7 +58,8 @@ contract DegenToken is ERC20, ERC20Burnable, Ownable {
 
         require(balanceOf(msg.sender) >= amountToRedeem, "Insufficient balance");
         
-        _transfer(msg.sender, owner(), amountToRedeem);
+        // Burn the tokens instead of transferring
+        _burn(msg.sender, amountToRedeem);
 
         // Add redeemed item to the user's list
         if (choice == 1) {
